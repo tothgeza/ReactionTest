@@ -1,0 +1,238 @@
+:root {
+    --background-color: deepskyblue;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /*background: url("images/background.jpg") no-repeat;*/
+    /*background-size: cover;*/
+}
+
+body {
+    /*display: flex;*/
+    background-color: #114B5F;
+    text-align: center;
+    /*flex-direction: column;*/
+    padding-top: 8%;
+}
+
+#main {
+    width: 450px;
+    height: 450px;
+    /*background: goldenrod;*/
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+.container {
+    border-collapse: collapse;
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(5, [col-start] 90px [col-end]);
+    /*background-color: white;*/
+    border: 2px solid deepskyblue;
+    border-radius: 15px;
+}
+.target-bg{
+    --background-color:green;
+}
+#cell_a1 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 1;
+    grid-row: 1;
+    border-radius: 15px;
+}
+
+#cell_a2 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 2;
+    grid-row: 1;
+    border-radius: 15px;
+}
+
+#cell_a3 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 3;
+    grid-row: 1;
+    border-radius: 15px;
+}
+
+#cell_a4 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 4;
+    grid-row: 1;
+    border-radius: 15px;
+}
+
+#cell_a5 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 5;
+    grid-row: 1;
+    border-radius: 15px;
+}
+
+#cell_b1 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 1;
+    grid-row: 2;
+    border-radius: 15px;
+}
+
+#cell_b2 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 2;
+    grid-row: 2;
+    border-radius: 15px;
+}
+
+#cell_b3 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 3;
+    grid-row: 2;
+    border-radius: 15px;
+}
+
+#cell_b4 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 4;
+    grid-row: 2;
+    border-radius: 15px;
+}
+
+#cell_b5 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 5;
+    grid-row: 2;
+    border-radius: 15px;
+}
+
+#cell_c1 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 1;
+    grid-row: 3;
+    border-radius: 15px;
+}
+
+#cell_c2 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 2;
+    grid-row: 3;
+    border-radius: 15px;
+}
+
+#cell_c3 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 3;
+    grid-row: 3;
+    border-radius: 15px;
+}
+
+#cell_c4 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 4;
+    grid-row: 3;
+    border-radius: 15px;
+}
+
+#cell_c5 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 5;
+    grid-row: 3;
+    border-radius: 15px;
+}
+
+#cell_d1 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 1;
+    grid-row: 4;
+    border-radius: 15px;
+}
+
+#cell_d2 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 2;
+    grid-row: 4;
+    border-radius: 15px;
+}
+
+#cell_d3 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 3;
+    grid-row: 4;
+    border-radius: 15px;
+}
+
+#cell_d4 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 4;
+    grid-row: 4;
+    border-radius: 15px;
+}
+
+#cell_d5 {
+    background-color: var(--background-color);
+    margin: 20px;
+    grid-column: 5;
+    grid-row: 4;
+    border-radius: 15px;
+}
+
+#cell_e1 {
+    background-color: deepskyblue;
+    margin: 20px;
+    grid-column: 1;
+    grid-row: 5;
+    border-radius: 15px;
+}
+
+#cell_e2 {
+    background-color: deepskyblue;
+    margin: 20px;
+    grid-column: 2;
+    grid-row: 5;
+    border-radius: 15px;
+}
+
+#cell_e3 {
+    background-color: deepskyblue;
+    margin: 20px;
+    grid-column: 3;
+    grid-row: 5;
+    border-radius: 15px;
+}
+
+#cell_e4 {
+    background-color: deepskyblue;
+    margin: 20px;
+    grid-column: 4;
+    grid-row: 5;
+    border-radius: 15px;
+}
+
+#cell_e5 {
+    background-color: deepskyblue;
+    margin: 20px;
+    grid-column: 5;
+    grid-row: 5;
+    border-radius: 15px;
+}
