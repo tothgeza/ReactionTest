@@ -6,24 +6,28 @@
     <!-- http://proger.i-forge.net/The_smallest_transparent_pixel/ -->
     <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA=">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <title>Reaction Test</title>
-    <script src="game.js"></script>
 </head>
 <body>
-    <h1>Reaction Test</h1>
-    <div id="main">
+    <h1 class="animate__animated animate__fadeInDownBig">Reaction Test</h1>
+    <div class="main2 hide animate__animated"></div>
+    <div class="animate__animated animate__fadeInLeftBig main">
         <div class="container">
-            <div class="col" id="cell_a1"></div>
-            <div class="col" id="cell_a2"></div>
-            <div class="col" id="cell_a3"></div>
-            <div class="col" id="cell_b1"></div>
-            <div class="col" id="cell_b2"></div>
-            <div class="col" id="cell_b3"></div>
-            <div class="col" id="cell_c1"></div>
-            <div class="col" id="cell_c2"></div>
-            <div class="col" id="cell_c3"></div>
-
+            <div class="col" data-round=""></div>
+            <div class="col" data-round=""></div>
+            <div class="col" data-round=""></div>
+            <div class="col" data-round=""></div>
+            <div class="col" data-round=""></div>
+            <div class="col" data-round=""></div>
+            <div class="col" data-round=""></div>
+            <div class="col" data-round=""></div>
+            <div class="col" data-round=""></div>
         </div>
     </div>
+    <div class="button">
+        <button class="animate__animated animate__fadeInUpBig start-button">Start</button>
+    </div>
+    <script src="game.js"></script>
 </body>
 </html>
