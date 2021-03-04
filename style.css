@@ -1,5 +1,18 @@
 :root {
-    --background-color: deepskyblue;
+    --background-color: #21ebff00;
+    --neon-shadow: none;
+    --neon-border: none;
+    --black: #000;
+    --neonwhite: #e9fff4;
+    --neonwhite2: #e9fff49c;
+    --neonwhite3: #e9fff469;
+    --neonyellow: #fffb21;
+    --neongreen: #30ff21;
+    --neonblue: #21ebff;
+    --neonpurple: #a724ff;
+    --neonpink: #ff21d3;
+    --neonred: #ff214a;
+    --neonorange: #ff7e21;
 }
 * {
     padding: 0;
@@ -10,12 +23,11 @@
 }
 
 body {
-    background-color: #114B5F;
+    background-color: var(--black);
     text-align: center;
     padding-top: 8%;
     margin-bottom: 100rem;
 }
-
 .main {
     width: 450px;
     height: 450px;
@@ -28,6 +40,10 @@ body {
     margin: 10px auto;
     border-radius: 5px;
 }
+.title {
+    color: var(--neonblue);
+    text-shadow: 0px 0px 20px var(--neonblue);
+}
 
 .hide {
     display: none;
@@ -38,16 +54,65 @@ body {
     display: grid;
     grid-template-columns:  1fr 1fr 1fr;
     grid-template-rows: repeat(3, [col-start] 150px [col-end]);
-    border: 2px solid deepskyblue;
+    border: 2px solid var(--neonblue);
+    box-shadow: 0 0 20px var(--neonblue);
     border-radius: 15px;
 }
 .target-bg{
-    --background-color:green;
+    --background-color: var(--neongreen);
+    --neon-shadow: 0 0 50px var(--neongreen);
 }
+
 .col {
     background-color: var(--background-color);
-    margin: 20px;
-    border-radius: 15px;
+    box-shadow: var(--neon-shadow);
+    position: relative;
+    margin: 15px;
+    color: var(--neonblue);
+    transition: 0.5s;
+    padding: 20px 20px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.col:hover {
+    background-color: var(--neonwhite3);
+    color: var(--black);
+    box-shadow: 0 0 30px var(--neonwhite);
+    transition-delay: 0.2s;
+}
+
+.col:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border-top: 2px solid var(--neonblue);
+    border-left: 2px solid var(--neonblue);
+    transition: 0.5s;
+    border-radius: 3px;
+}
+.col:hover:before {
+    width: 90px;
+    height: 90px;
+}
+
+.col:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    border-bottom: 2px solid var(--neonblue);
+    border-right: 2px solid var(--neonblue);
+    transition: 0.5s;
+    border-radius: 3px;
+}
+.col:hover:after {
+    width: 90px;
+    height: 90px;
 }
 
 .container div:nth-of-type(1) {
