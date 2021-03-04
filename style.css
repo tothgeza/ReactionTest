@@ -3,8 +3,11 @@
     --theme-color: var(--neonblue);
     --neon-shadow: none;
     --neon-border: none;
+    --button-color: var(--theme-color);
+    /*colors*/
+    --translucent: #00000000;
     --black: #000000;
-    --black2: #000080;
+    --black2: #00000080;
     --neonwhite: #ffffff;
     --neonwhite2: #ffffff60;
     --neonwhite3: #ffffff10;
@@ -41,15 +44,15 @@ body {
     /*font-family: 'Patrick Hand', cursive;*/
     /*font-family: 'Sacramento', cursive;*/
     text-align: center;
-    padding-top: 2%;
-    margin-bottom: 10rem;
+    padding-top: 1%;
+    /*margin-bottom: 10rem;*/
     overflow: hidden;
 }
 
 .main {
     width: 450px;
     height: 450px;
-    margin: 10px auto;
+    margin: 25px auto;
     border-radius: 15px;
     border: 2px solid var(--theme-color);
     box-shadow: 0 0 20px var(--theme-color);
@@ -83,16 +86,16 @@ body {
     align-items: center;
 }
 
+
 .wrapper {
     overflow: auto;
     width: 410px;
     border-radius: 8px 8px 8px 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px var(--theme-color);
 }
 
 .result-table {
     border-collapse: collapse !important;
-    font-family: sans-serif;
     min-width: 410px;
 }
 
@@ -110,7 +113,7 @@ body {
 }
 
 tbody tr:last-child {
-    background-color: deeppink;
+    background-color: deepskyblue;
     color: white;
 }
 
@@ -119,15 +122,16 @@ tbody tr:last-child {
 }
 
 
+
 /*user-interface*/
 .title {
     color: var(--theme-color);
     text-shadow: 0 0 30px var(--theme-color), 0 0 30px var(--theme-color);
     position: relative;
-    margin: 15px 40%;
+    margin: 25px 40%;
     transition: 0.5s;
     padding: 30px 30px;
-    border-radius: 30px;
+    /*border-radius: 30px;*/
 }
 
 .title:before {
@@ -166,10 +170,79 @@ tbody tr:last-child {
     height: 110%;
 }
 
+.start-button {
+    --button-color: var(--neongreen)
+}
+
+.again-button {
+    --button-color: var(--neonorange);
+}
+
+.score-button {
+    --button-color: var(--neonpink);
+
+}
 
 .button {
-    margin: 20px;
+    color: var(--button-color);
+    text-shadow: 0 0 30px var(--button-color), 0 0 30px var(--button-color);
+    position: relative;
+    margin: 15px 15px;
+    transition: 0.5s;
+    padding: 10px 10px;
+    text-decoration: none;
+    /*border-radius: 30px;*/
+
 }
+
+.button:hover {
+    background: var(--button-color);
+    color: var(--black);
+    box-shadow: 0 0 30px var(--button-color);
+    transition-delay: 0.5s;
+    /*transition: 0.5s;*/
+    /*position: relative;*/
+    /*margin: 15px 15px;*/
+    /*padding: 10px 10px;*/
+    /*border-radius: 30px;*/
+}
+
+.button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid var(--button-color);
+    border-left: 2px solid var(--button-color);
+    transition: 0.5s;
+    border-radius: 3px;
+}
+
+.button:hover:before {
+    width: 103%;
+    height: 110%;
+}
+
+.button:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid var(--button-color);
+    border-right: 2px solid var(--button-color);
+    transition: 0.5s;
+    border-radius: 3px;
+}
+
+.button:hover:after {
+    width: 103%;
+    height: 110%;
+}
+
 
 /*table*/
 .target-bg {
