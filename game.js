@@ -1,10 +1,14 @@
 initGame();
+let scoreBoard = [];
+let roundsResult = {};
 
 function initGame() {
+    // Your game can start here, but define separate functions, don't write everything in here :)
     initLeftClick();
     initCrossHair();
-    // Your game can start here, but define separate functions, don't write everything in here :)
-
+    setTimeout(() => {
+        animationGameTitleIn();
+    }, 150);
 }
 
 function initLeftClick() {
@@ -16,6 +20,13 @@ function initLeftClick() {
     startButton.addEventListener("click", clickOnStart);
     let againButton = document.querySelector(".again-button");
     againButton.addEventListener("click", clickOnAgain);
+    let scoreButton = document.querySelector(".score-button");
+    scoreButton.addEventListener("click", clickOnScoreBoard);
+}
+
+function animationGameTitleIn() {
+    let title = document.querySelector(".title");
+    title.classList.add("animate__fadeInDownBig");
 }
 
 function leftClick(event) {
@@ -24,7 +35,8 @@ function leftClick(event) {
     if (cell.classList.contains("target")) {
         let roundCurrent = "Round" + event.currentTarget.dataset.round.toString(),
             showTime = sessionStorage.getItem("showTime");
-        localStorage.setItem(roundCurrent, clickTime - showTime);
+        // localStorage.setItem(roundCurrent, clickTime - showTime);
+        roundsResult [roundCurrent] = clickTime - showTime;
         cell.classList.add("hit-bg");
         setTimeout(() => {
             cell.classList.remove("hit-bg");
@@ -51,6 +63,14 @@ function clickOnAgain() {
     }, 1000);
 }
 
+function clickOnScoreBoard() {
+    animationStartButtonMoveOut();
+    animationGameMoveOut();
+    setScoreBoard();
+    animationScoreBoardMoveIn();
+
+}
+
 function gameOver() {
     animationGameMoveOut();
     setTimeout(() => {
@@ -58,7 +78,29 @@ function gameOver() {
         animationAgainButtonMoveIn();
     }, 1000)
     setResults();
+}
 
+function animationScoreBoardMoveIn() {
+    let container3 = document.querySelector(".container3"),
+        container = document.querySelector(".container");
+    container3.style.display = "block";
+    container.style.display = "none";
+    container3.classList.remove("animate__fadeOutRightBig");
+    container3.classList.add("animate__fadeInRightBig");
+}
+
+function setScoreBoard() {
+    let container3 = document.querySelector(".container3");
+    // let board = JSON.parse(localStorage.getItem("board"));
+    // console.log(board);
+    for (let score of scoreBoard) {
+        // console.log(score);
+        let tempDiv = document.createElement("div");
+        tempDiv.innerHTML = "<div>" + `${score[0]}` + " " + `${score[1]}` + " points</div>";
+        container3.insertAdjacentElement(
+            'beforeend',
+            tempDiv);
+    }
 }
 
 function animationAgainButtonMoveIn() {
@@ -159,13 +201,37 @@ function setResults() {
         lastCell = lastRow.querySelector('td:nth-child(3)');
     firstCell.innerHTML = "<td>Points</td>";
     lastCell.innerHTML = "<td>" + points.toFixed(3).toString() + "</td>";
+    let playerName = prompt("Please enter your name");
+    if (playerName != null) {
+        let tempScore = [playerName, points.toFixed(3)];
+        // console.log(tempScore);
+        refreshScoreBoard(tempScore);
+    }
+}
 
+function refreshScoreBoard(newScore) {
+    console.log(newScore);
+    // scoreBoard = JSON.parse(localStorage.getItem("board"));
+    scoreBoard.push(newScore);
+    console.log(scoreBoard);
+    scoreBoard.sort(sortFunction);
+    console.log(scoreBoard);
+
+    function sortFunction(a, b) {
+        if (a[0] === b[0]) {
+            return 0;
+        }
+        return (a[1] < b[1]) ? 1 : -1;
+    }
+
+    localStorage.setItem("board", JSON.stringify("scoreBoard"))
 }
 
 function startGame() {
     let cells = document.getElementsByClassName("col"),
         round = 0;
-    localStorage.clear();
+    // localStorage.clear();
+    roundsResult = {};
     sessionStorage.clear();
     const interval = setInterval(function () {
         if (round === 9) {
@@ -198,8 +264,10 @@ function allResults() {
     for (let index = 0; index < 10; index++) {
         let key = "Round" + index.toString(),
             tempArray = [];
-        if (localStorage.hasOwnProperty(key)) {
-            tempArray.push(counter + 1, "Hit", localStorage.getItem(key))
+        // if (localStorage.hasOwnProperty(key)) {
+        if (key in roundsResult) {
+            // tempArray.push(counter + 1, "Hit", localStorage.getItem(key))
+            tempArray.push(counter + 1, "Hit", roundsResult[key])
         } else {
             tempArray.push(counter + 1, "Miss", "3")
         }
