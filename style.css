@@ -21,6 +21,7 @@
     --neonorange: #ff954a;
     --neonorange2: #ff954a80;
 }
+
 * {
     padding: 0;
     margin: 0;
@@ -52,11 +53,13 @@ body {
 .hide {
     display: none;
 }
-.result{
+
+.result {
     color: deepskyblue;
     font-size: 1.2em;
     margin: 10px auto;
 }
+
 .container {
     border-collapse: collapse;
     display: grid;
@@ -64,37 +67,49 @@ body {
     grid-template-rows: repeat(3, [col-start] 150px [col-end]);
     border-radius: 15px;
 }
+
+.container3 {
+    padding: 20px;
+    align-items: center;
+}
+
 .container2 {
     padding: 20px;
     align-items: center;
 }
+
 .wrapper {
     overflow: auto;
     width: 410px;
     border-radius: 8px 8px 8px 8px;
-    box-shadow: 0 0 20px rgba(0,0,0, 0.15);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
+
 .result-table {
     border-collapse: collapse !important;
     font-family: sans-serif;
     min-width: 410px;
 }
+
 .container2 th,
 .container2 td {
     padding: 7px 15px;
     text-align: center;
     color: white;
 }
+
 .container2 thead {
     background-color: deepskyblue;
     color: white;
 }
+
 tbody tr:last-child {
     background-color: deepskyblue;
     color: white;
 }
+
 .container2 tbody tr:nth-of-type(even) {
-    background-color: rgba(0,191,255,0.5);
+    background-color: rgba(0, 191, 255, 0.5);
 }
 .target-bg{
     --background-color: var(--neongreen);
@@ -148,54 +163,7 @@ tbody tr:last-child {
     transition: 0.5s;
     border-radius: 3px;
 }
-.col:hover:after {
-    width: 90px;
-    height: 90px;
-}
 
-.container div:nth-of-type(1) {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-.container div:nth-of-type(2) {
-    grid-column: 2;
-    grid-row: 1;
-}
-
-.container div:nth-of-type(3) {
-    grid-column: 3;
-    grid-row: 1;
-}
-
-.container div:nth-of-type(4){
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.container div:nth-of-type(5) {
-    grid-column: 2;
-    grid-row: 2;
-}
-
-.container div:nth-of-type(6) {
-    grid-column: 3;
-    grid-row: 2;
-}
-.container div:nth-of-type(7){
-    grid-column: 1;
-    grid-row: 3;
-}
-
-.container div:nth-of-type(8) {
-    grid-column: 2;
-    grid-row: 3;
-}
-
-.container div:nth-of-type(9) {
-    grid-column: 3;
-    grid-row: 3;
-}
 .button {
     margin: 20px;
 }
