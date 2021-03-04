@@ -41,7 +41,7 @@ body {
     /*font-family: 'Patrick Hand', cursive;*/
     /*font-family: 'Sacramento', cursive;*/
     text-align: center;
-    padding-top: 5%;
+    padding-top: 2%;
     margin-bottom: 10rem;
     overflow: hidden;
 }
@@ -118,21 +118,16 @@ tbody tr:last-child {
     background-color: var(--neonblue2);
 }
 
+
+/*user-interface*/
 .title {
     color: var(--theme-color);
-    text-shadow: 0px 0px 20px var(--theme-color);
+    text-shadow: 0 0 30px var(--theme-color), 0 0 30px var(--theme-color);
     position: relative;
-    margin: 15px;
+    margin: 15px 40%;
     transition: 0.5s;
-    padding: 20px 20px;
+    padding: 30px 30px;
     border-radius: 30px;
-}
-
-.title:hover {
-    background-color: var(--neonwhite3);
-    color: var(--black);
-    box-shadow: 0 0 30px var(--neonwhite);
-    transition-delay: 0.2s;
 }
 
 .title:before {
@@ -140,17 +135,17 @@ tbody tr:last-child {
     position: absolute;
     top: 0;
     left: 0;
-    width: 15px;
-    height: 15px;
-    border-top: 2px solid var(--neonblue);
-    border-left: 2px solid var(--neonblue);
+    width: 20px;
+    height: 20px;
+    border-top: 3px solid var(--neonblue);
+    border-left: 3px solid var(--neonblue);
     transition: 0.5s;
     border-radius: 3px;
 }
 
 .title:hover:before {
-    width: 90px;
-    height: 90px;
+    width: 103%;
+    height: 110%;
 }
 
 .title:after {
@@ -158,14 +153,25 @@ tbody tr:last-child {
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 15px;
-    height: 15px;
-    border-bottom: 2px solid var(--neonblue);
-    border-right: 2px solid var(--neonblue);
+    width: 20px;
+    height: 20px;
+    border-bottom: 3px solid var(--neonblue);
+    border-right: 3px solid var(--neonblue);
     transition: 0.5s;
     border-radius: 3px;
 }
 
+.title:hover:after {
+    width: 103%;
+    height: 110%;
+}
+
+
+.button {
+    margin: 20px;
+}
+
+/*table*/
 .target-bg {
     --background-color: var(--neonyellow2);
     --neon-shadow: 0 0 50px var(--neonyellow);
@@ -235,8 +241,4 @@ tbody tr:last-child {
 .col:hover:after {
     width: 110%;
     height: 110%;
-}
-
-.button {
-    margin: 20px;
 }
