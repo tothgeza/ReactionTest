@@ -1,5 +1,6 @@
 :root {
     --background-color: deepskyblue;
+    --shadow: none;
 }
 * {
     padding: 0;
@@ -10,7 +11,7 @@
 }
 
 body {
-    background-color: #114B5F;
+    background-color: white;
     text-align: center;
     padding-top: 8%;
     margin-bottom: 100rem;
@@ -73,8 +74,10 @@ tbody tr:last-child {
 .target-bg{
     --background-color:green;
 }
+
 .col {
     background-color: var(--background-color);
+    box-shadow: 0 0 20px var(--shadow);
     margin: 20px;
     border-radius: 15px;
 }

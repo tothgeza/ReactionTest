@@ -3,7 +3,6 @@ initGame();
 function initGame() {
     initLeftClick();
     initCrossHair();
-    // startGame();
     // Your game can start here, but define separate functions, don't write everything in here :)
 
 }
@@ -20,13 +19,21 @@ function initLeftClick() {
 }
 
 function leftClick(event) {
-    if (event.currentTarget.classList.contains("target")) {
+    let clickTime = Date.now(),
+        cell = event.currentTarget;
+    if (cell.classList.contains("target")) {
         let roundCurrent = "Round" + event.currentTarget.dataset.round.toString(),
-            clickTime = Date.now(),
             showTime = sessionStorage.getItem("showTime");
         localStorage.setItem(roundCurrent, clickTime - showTime);
+        cell.classList.add("hit-bg");
+        setTimeout(() => {
+            cell.classList.remove("hit-bg");
+        }, 150);
     } else {
-        console.log("False");
+        cell.classList.add("miss-bg");
+        setTimeout(() => {
+            cell.classList.remove("miss-bg");
+        }, 150);
     }
 }
 
