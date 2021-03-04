@@ -20,26 +20,56 @@ body {
     width: 450px;
     height: 450px;
     margin: 10px auto;
-    border-radius: 5px;
-}
-.main2 {
-    width: 450px;
-    height: 450px;
-    margin: 10px auto;
-    border-radius: 5px;
+    border: 2px solid #00bfff;
+    border-radius: 15px;
 }
 
 .hide {
     display: none;
-    background-color: chocolate;
+    /*background-color: chocolate;*/
+}
+.result{
+    color: deepskyblue;
+    font-size: 1.2em;
+    margin: 10px auto;
 }
 .container {
     border-collapse: collapse;
     display: grid;
     grid-template-columns:  1fr 1fr 1fr;
     grid-template-rows: repeat(3, [col-start] 150px [col-end]);
-    border: 2px solid deepskyblue;
-    border-radius: 15px;
+}
+.container2 {
+    padding: 20px;
+    font-family: sans-serif;
+    align-items: center;
+    /*border-radius: 8px 8px 0 0;*/
+    /*box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);*/
+}
+.result-table {
+    border-collapse: collapse !important;
+    /*font-size: 0.9em;*/
+    font-family: sans-serif;
+    min-width: 400px;
+    border-radius: 8px 8px 0 0;
+    /*box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);*/
+}
+.container2 th,
+.container2 td {
+    padding: 7px 15px;
+    text-align: center;
+    color: white;
+}
+.container2 thead {
+    background-color: deepskyblue;
+    color: white;
+}
+tbody tr:last-child {
+    background-color: deepskyblue;
+    color: white;
+}
+.container2 tbody tr:nth-of-type(even) {
+    background-color: rgba(0,191,255,0.5);
 }
 .target-bg{
     --background-color:green;
