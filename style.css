@@ -1,11 +1,11 @@
 :root {
-    --background-color: #21ebff00;
+    --background-color: var(--neonwhite3);
     --neon-shadow: none;
     --neon-border: none;
     --black: #000;
     --neonwhite: #e9fff4;
-    --neonwhite2: #e9fff49c;
-    --neonwhite3: #e9fff469;
+    --neonwhite2: rgba(233, 255, 244, 0.61);
+    --neonwhite3: rgba(255, 255, 255, 0.03);
     --neonyellow: #fffb21;
     --neongreen: #30ff21;
     --neonblue: #21ebff;
@@ -33,8 +33,9 @@ body {
     width: 450px;
     height: 450px;
     margin: 10px auto;
-    border: 2px solid #00bfff;
     border-radius: 15px;
+    border: 2px solid var(--neonblue);
+    box-shadow: 0 0 20px var(--neonblue);
 }
 .title {
     color: var(--neonblue);
@@ -54,8 +55,6 @@ body {
     display: grid;
     grid-template-columns:  1fr 1fr 1fr;
     grid-template-rows: repeat(3, [col-start] 150px [col-end]);
-    border: 2px solid var(--neonblue);
-    box-shadow: 0 0 20px var(--neonblue);
     border-radius: 15px;
 }
 .container2 {
@@ -104,7 +103,7 @@ tbody tr:last-child {
     transition: 0.5s;
     padding: 20px 20px;
     border-radius: 30px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .col:hover {
     background-color: var(--neonwhite3);
