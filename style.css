@@ -1,8 +1,10 @@
 :root {
     --background-color: var(--neonwhite3);
+    --theme-color: var(--neonblue);
     --neon-shadow: none;
     --neon-border: none;
     --black: #000000;
+    --black2: #000080;
     --neonwhite: #ffffff;
     --neonwhite2: #ffffff60;
     --neonwhite3: #ffffff10;
@@ -10,6 +12,7 @@
     --neonyellow2: #fffd6380;
     --neongreen: #35ff7d;
     --neongreen2: #35ff7d80;
+    --neongreen3: #35ff7d15;
     --neonblue: #21b5ff;
     --neonblue2: #21b5ff80;
     --neonpurple: #b05eff;
@@ -18,6 +21,7 @@
     --neonpink2: #ff19c980;
     --neonred: #ff1c6a;
     --neonred2: #ff1c6a80;
+    --neonred3: #ff1c6a15;
     --neonorange: #ff954a;
     --neonorange2: #ff954a80;
 }
@@ -26,16 +30,20 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    /*background: url("images/background.jpg") no-repeat;*/
-    /*background-size: cover;*/
 }
 
 body {
-    background: linear-gradient(#00000080,#00000080), url("images/3703013.jpg");
-    background-size: contain;
+    background: linear-gradient(#000000aa, #000000aa), url("images/3703013.jpg");
+    background-size: cover;
+    font-family: 'Comfortaa', cursive;
+    /*font-family: 'Charmonman', cursive;*/
+    /*font-family: 'Grand Hotel', cursive;*/
+    /*font-family: 'Patrick Hand', cursive;*/
+    /*font-family: 'Sacramento', cursive;*/
     text-align: center;
     padding-top: 5%;
-    margin-bottom: 100rem;
+    margin-bottom: 10rem;
+    overflow: hidden;
 }
 
 .main {
@@ -43,8 +51,8 @@ body {
     height: 450px;
     margin: 10px auto;
     border-radius: 15px;
-    border: 2px solid var(--neonblue);
-    box-shadow: 0 0 20px var(--neonblue);
+    border: 2px solid var(--theme-color);
+    box-shadow: 0 0 20px var(--theme-color);
 }
 
 .hide {
@@ -52,7 +60,7 @@ body {
 }
 
 .result {
-    color: deepskyblue;
+    color: var(--theme-color);
     font-size: 1.2em;
     margin: 10px auto;
 }
@@ -96,28 +104,83 @@ body {
 }
 
 .container2 thead {
-    background-color: deepskyblue;
+    background-color: var(--theme-color);
+    box-shadow: var(--neonblue);
     color: white;
 }
 
 tbody tr:last-child {
-    background-color: deepskyblue;
+    background-color: deeppink;
     color: white;
 }
 
 .container2 tbody tr:nth-of-type(even) {
-    background-color: rgba(0, 191, 255, 0.5);
+    background-color: var(--neonblue2);
 }
 
 .title {
-    color: var(--neonblue);
-    text-shadow: 0px 0px 20px var(--neonblue);
+    color: var(--theme-color);
+    text-shadow: 0px 0px 20px var(--theme-color);
+    position: relative;
+    margin: 15px;
+    transition: 0.5s;
+    padding: 20px 20px;
+    border-radius: 30px;
+}
+
+.title:hover {
+    background-color: var(--neonwhite3);
+    color: var(--black);
+    box-shadow: 0 0 30px var(--neonwhite);
+    transition-delay: 0.2s;
+}
+
+.title:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border-top: 2px solid var(--neonblue);
+    border-left: 2px solid var(--neonblue);
+    transition: 0.5s;
+    border-radius: 3px;
+}
+
+.title:hover:before {
+    width: 90px;
+    height: 90px;
+}
+
+.title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    border-bottom: 2px solid var(--neonblue);
+    border-right: 2px solid var(--neonblue);
+    transition: 0.5s;
+    border-radius: 3px;
 }
 
 .target-bg {
-    --background-color: var(--neongreen);
+    --background-color: var(--neonyellow2);
+    --neon-shadow: 0 0 50px var(--neonyellow);
+}
+
+.hit-bg {
+    --background-color: var(--neongreen3);
     --neon-shadow: 0 0 50px var(--neongreen);
 }
+
+.miss-bg {
+    --background-color: var(--neonred3);
+    --neon-shadow: 0 0 50px var(--neonred);
+}
+
 
 .col {
     background-color: var(--background-color);
@@ -127,7 +190,7 @@ tbody tr:last-child {
     color: var(--neonblue);
     transition: 0.5s;
     padding: 20px 20px;
-    border-radius: 30px;
+    border-radius: 20px;
     /*overflow: hidden;*/
 }
 
@@ -152,8 +215,8 @@ tbody tr:last-child {
 }
 
 .col:hover:before {
-    width: 90px;
-    height: 90px;
+    width: 110%;
+    height: 110%;
 }
 
 .col:after {
@@ -167,6 +230,11 @@ tbody tr:last-child {
     border-right: 2px solid var(--neonblue);
     transition: 0.5s;
     border-radius: 3px;
+}
+
+.col:hover:after {
+    width: 110%;
+    height: 110%;
 }
 
 .button {
