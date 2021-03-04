@@ -15,6 +15,8 @@ function initLeftClick() {
     }
     let startButton = document.querySelector(".start-button");
     startButton.addEventListener("click", startClick);
+    let againButton = document.querySelector(".again-button");
+    againButton.addEventListener("click", againClick);
 }
 
 function leftClick(event) {
@@ -30,24 +32,47 @@ function leftClick(event) {
 }
 
 function startClick() {
-    startGame()
+    startButtonMoveOut();
+    startGame();
+}
+function againClick(){
+    animationAgainButtonMoveOut();
+    animationResultsMoveOut();
+    setTimeout(() => {
+        animationGameMoveIn();
+    }, 1000);
+    animationStartButtonMoveIn();
 }
 
 function gameOver() {
     animationMoveOut();
     setTimeout(() => {
         animationMoveIn();
+        animationAgainButtonMoveIn();
     }, 1000)
     setResults();
-}
 
+}
+function animationAgainButtonMoveIn() {
+    let againButton = document.querySelector(".again-button");
+    againButton.classList.remove("hide");
+    againButton.classList.add("animate__fadeInDownBig");
+}
+function animationStartButtonMoveIn() {
+    let startButton = document.querySelector(".start-button");
+    startButton.classList.remove("animate__fadeOutDownBig");
+    startButton.classList.add("animate__fadeInUpBig");
+}
+function startButtonMoveOut() {
+    let startButton = document.querySelector(".start-button");
+    startButton.classList.remove("animate__fadeInUpBig");
+    startButton.classList.add("animate__fadeOutDownBig");
+
+}
 function animationMoveOut() {
-    let container = document.querySelector(".container"),
-        startButton = document.querySelector(".start-button");
+    let container = document.querySelector(".container");
     container.classList.remove("animate__fadeInLeftBig");
     container.classList.add("animate__fadeOutLeftBig");
-    startButton.classList.remove("animate__fadeInUpBig");
-    startButton.classList.add("animate__fadeOutUpBig");
 }
 
 function animationMoveIn() {
@@ -56,6 +81,24 @@ function animationMoveIn() {
     container2.style.display = "block";
     container.style.display = "none";
     container2.classList.add("animate__fadeInRightBig");
+}
+function animationResultsMoveOut() {
+    let container2 = document.querySelector(".container2");
+    container2.classList.remove("animate__fadeInRightBig");
+    container2.classList.add("animate__fadeOutRightBig");
+    container2.style.display = "none";
+}
+function animationAgainButtonMoveOut() {
+    let againButton = document.querySelector(".again-button");
+    againButton.classList.remove("animate__fadeInUpBig");
+    againButton.classList.add("animate__fadeOutDownBig");
+
+}
+function animationGameMoveIn(){
+    let container = document.querySelector(".container");
+    container.style.display = "grid";
+    container.classList.remove("animate__fadeOutLeftBig");
+    container.classList.add("animate__fadeInLeftBig");
 }
 
 function initCrossHair() {
@@ -73,7 +116,6 @@ function setRound(round) {
 function setResults() {
     let results = allResults(),
         points = 0;
-
     for (const [index, result] of results.entries()) {
         let actualRow = document.querySelector(`tbody tr:nth-child(${index + 1})`),
             firstCell = actualRow.querySelector('td:nth-child(1)'),
@@ -102,6 +144,7 @@ function startGame() {
     let cells = document.getElementsByClassName("col"),
         round = 0;
     localStorage.clear();
+    sessionStorage.clear();
     const interval = setInterval(function () {
         if (round === 9) {
             clearInterval(interval);
