@@ -28,17 +28,13 @@ body {
     padding-top: 8%;
     margin-bottom: 100rem;
 }
+
 .main {
     width: 450px;
     height: 450px;
     margin: 10px auto;
-    border-radius: 5px;
-}
-.main2 {
-    width: 450px;
-    height: 450px;
-    margin: 10px auto;
-    border-radius: 5px;
+    border: 2px solid #00bfff;
+    border-radius: 15px;
 }
 .title {
     color: var(--neonblue);
@@ -47,7 +43,11 @@ body {
 
 .hide {
     display: none;
-    background-color: chocolate;
+}
+.result{
+    color: deepskyblue;
+    font-size: 1.2em;
+    margin: 10px auto;
 }
 .container {
     border-collapse: collapse;
@@ -57,6 +57,38 @@ body {
     border: 2px solid var(--neonblue);
     box-shadow: 0 0 20px var(--neonblue);
     border-radius: 15px;
+}
+.container2 {
+    padding: 20px;
+    align-items: center;
+}
+.wrapper {
+    overflow: auto;
+    width: 410px;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 0 0 20px rgba(0,0,0, 0.15);
+}
+.result-table {
+    border-collapse: collapse !important;
+    font-family: sans-serif;
+    min-width: 410px;
+}
+.container2 th,
+.container2 td {
+    padding: 7px 15px;
+    text-align: center;
+    color: white;
+}
+.container2 thead {
+    background-color: deepskyblue;
+    color: white;
+}
+tbody tr:last-child {
+    background-color: deepskyblue;
+    color: white;
+}
+.container2 tbody tr:nth-of-type(even) {
+    background-color: rgba(0,191,255,0.5);
 }
 .target-bg{
     --background-color: var(--neongreen);
