@@ -14,9 +14,9 @@ function initLeftClick() {
         cell.addEventListener("click", leftClick);
     }
     let startButton = document.querySelector(".start-button");
-    startButton.addEventListener("click", startClick);
+    startButton.addEventListener("click", clickOnStart);
     let againButton = document.querySelector(".again-button");
-    againButton.addEventListener("click", againClick);
+    againButton.addEventListener("click", clickOnAgain);
 }
 
 function leftClick(event) {
@@ -24,78 +24,93 @@ function leftClick(event) {
         let roundCurrent = "Round" + event.currentTarget.dataset.round.toString(),
             clickTime = Date.now(),
             showTime = sessionStorage.getItem("showTime");
-        console.log(clickTime - showTime)
         localStorage.setItem(roundCurrent, clickTime - showTime);
     } else {
         console.log("False");
     }
 }
 
-function startClick() {
-    startButtonMoveOut();
+function clickOnStart() {
+    animationStartButtonMoveOut();
     startGame();
 }
-function againClick(){
+
+function clickOnAgain() {
     animationAgainButtonMoveOut();
     animationResultsMoveOut();
     setTimeout(() => {
         animationGameMoveIn();
+        animationStartButtonMoveIn();
     }, 1000);
-    animationStartButtonMoveIn();
 }
 
 function gameOver() {
-    animationMoveOut();
+    animationGameMoveOut();
     setTimeout(() => {
-        animationMoveIn();
+        animationResultsMoveIn();
         animationAgainButtonMoveIn();
     }, 1000)
     setResults();
 
 }
+
 function animationAgainButtonMoveIn() {
-    let againButton = document.querySelector(".again-button");
+    let againButton = document.querySelector(".again-button"),
+        startButton = document.querySelector(".start-button");
+    startButton.style.display = "none";
     againButton.classList.remove("hide");
-    againButton.classList.add("animate__fadeInDownBig");
+    againButton.classList.remove("animate__fadeOutDownBig");
+    againButton.classList.add("animate__fadeInUpBig");
+    againButton.style.display = "inline-block";
 }
+
+function animationAgainButtonMoveOut() {
+    let againButton = document.querySelector(".again-button");
+    againButton.classList.remove("animate__fadeInUpBig");
+    againButton.classList.add("animate__fadeOutDownBig");
+}
+
 function animationStartButtonMoveIn() {
-    let startButton = document.querySelector(".start-button");
+    let startButton = document.querySelector(".start-button"),
+        againButton = document.querySelector(".again-button");
+    againButton.style.display = "none";
     startButton.classList.remove("animate__fadeOutDownBig");
     startButton.classList.add("animate__fadeInUpBig");
+    startButton.style.display = "inline-block";
 }
-function startButtonMoveOut() {
+
+function animationStartButtonMoveOut() {
     let startButton = document.querySelector(".start-button");
     startButton.classList.remove("animate__fadeInUpBig");
     startButton.classList.add("animate__fadeOutDownBig");
 
 }
-function animationMoveOut() {
+
+function animationGameMoveOut() {
     let container = document.querySelector(".container");
     container.classList.remove("animate__fadeInLeftBig");
     container.classList.add("animate__fadeOutLeftBig");
 }
 
-function animationMoveIn() {
+function animationResultsMoveIn() {
     let container2 = document.querySelector(".container2"),
         container = document.querySelector(".container");
     container2.style.display = "block";
     container.style.display = "none";
+    container2.classList.remove("animate__fadeOutRightBig");
     container2.classList.add("animate__fadeInRightBig");
 }
+
 function animationResultsMoveOut() {
     let container2 = document.querySelector(".container2");
     container2.classList.remove("animate__fadeInRightBig");
     container2.classList.add("animate__fadeOutRightBig");
-    container2.style.display = "none";
 }
-function animationAgainButtonMoveOut() {
-    let againButton = document.querySelector(".again-button");
-    againButton.classList.remove("animate__fadeInUpBig");
-    againButton.classList.add("animate__fadeOutDownBig");
 
-}
-function animationGameMoveIn(){
-    let container = document.querySelector(".container");
+function animationGameMoveIn() {
+    let container = document.querySelector(".container"),
+        container2 = document.querySelector(".container2");
+    container2.style.display = "none";
     container.style.display = "grid";
     container.classList.remove("animate__fadeOutLeftBig");
     container.classList.add("animate__fadeInLeftBig");
@@ -171,7 +186,6 @@ function startGame() {
 }
 
 function allResults() {
-
     let results = [],
         counter = 0;
     for (let index = 0; index < 10; index++) {
@@ -185,6 +199,5 @@ function allResults() {
         counter += 1;
         results.push(tempArray);
     }
-    // results.push("All hits : " + counter.toString());
     return results;
 }
