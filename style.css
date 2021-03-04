@@ -45,8 +45,8 @@ body {
     /*font-family: 'Sacramento', cursive;*/
     text-align: center;
     padding-top: 1%;
-    /*margin-bottom: 10rem;*/
-    overflow: hidden;
+    margin-bottom: 10rem;
+    /*overflow: hidden;*/
 }
 
 .main {
@@ -192,6 +192,7 @@ tbody tr:last-child {
     transition: 0.5s;
     padding: 10px 10px;
     text-decoration: none;
+    font-size: 30px;
     /*border-radius: 30px;*/
 
 }
