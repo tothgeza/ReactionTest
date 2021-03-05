@@ -51,6 +51,7 @@ function leftClick(event) {
 
 function clickOnStart() {
     animationStartButtonMoveOut();
+    animationScoreButtonMoveOut();
     startGame();
 }
 
@@ -60,11 +61,13 @@ function clickOnAgain() {
     setTimeout(() => {
         animationGameMoveIn();
         animationStartButtonMoveIn();
+        animationScoreButtonMoveIn();
     }, 1000);
 }
 
 function clickOnScoreBoard() {
     animationStartButtonMoveOut();
+    animationScoreButtonMoveOut();
     animationGameMoveOut();
     setScoreBoard();
     animationScoreBoardMoveIn();
@@ -101,6 +104,17 @@ function setScoreBoard() {
             'beforeend',
             tempDiv);
     }
+}
+function animationScoreButtonMoveOut(){
+     let scoreButton = document.querySelector(".score-button");
+     scoreButton.classList.remove("animate__fadeInDownBig");
+     scoreButton.classList.add("animate__fadeOutUpBig");
+}
+
+function animationScoreButtonMoveIn() {
+    let scoreButton = document.querySelector(".score-button");
+     scoreButton.classList.remove("animate__fadeOutUpBig");
+     scoreButton.classList.add("animate__fadeInDownBig");
 }
 
 function animationAgainButtonMoveIn() {
@@ -213,18 +227,14 @@ function refreshScoreBoard(newScore) {
     console.log(newScore);
     // scoreBoard = JSON.parse(localStorage.getItem("board"));
     scoreBoard.push(newScore);
-    console.log(scoreBoard);
     scoreBoard.sort(sortFunction);
-    console.log(scoreBoard);
-
     function sortFunction(a, b) {
         if (a[0] === b[0]) {
             return 0;
         }
         return (a[1] < b[1]) ? 1 : -1;
     }
-
-    localStorage.setItem("board", JSON.stringify(scoreBoard))
+    // localStorage.setItem("board", JSON.stringify(scoreBoard))
 }
 
 function startGame() {
