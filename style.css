@@ -187,7 +187,9 @@ body {
     --button-color: var(--neonpink);
 
 }
-
+.buttons {
+    margin: 3rem auto;
+}
 .button {
     color: var(--button-color);
     text-shadow: 0 0 30px var(--button-color), 0 0 30px var(--button-color);
