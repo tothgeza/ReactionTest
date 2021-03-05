@@ -111,28 +111,31 @@ function animationScoreBoardMoveOut() {
 }
 
 function setScoreBoard() {
-    // let container3 = document.querySelector(".container3");
+    let tbody = document.querySelector(".container3 tbody");
     // first clear scoreboard
-    // while (container3.firstChild) {
-    //     container3.removeChild(container3.lastChild);
-    // }
-    // for (let score of scoreBoard.slice(0, 10)) {
-    //     let tempDiv = document.createElement("div");
-    //     tempDiv.innerHTML = "<div>" + `${score[0]}` + " " + `${score[1]}` + " points</div>";
-    //     container3.insertAdjacentElement(
-    //         'beforeend',
-    //         tempDiv);
+    while (tbody.firstChild) {
+        tbody.removeChild(tbody.lastChild);
+    }
+    // for (const [index, score] of scoreBoard.slice(0, 10).entries()) {
+    //     let actualRow = document.querySelector(`.container3 tbody tr:nth-child(${index + 1})`);
+    //
+    //     let firstCell = actualRow.querySelector('td:nth-child(1)'),
+    //         secondCell = actualRow.querySelector('td:nth-child(2)'),
+    //         thirdCell = actualRow.querySelector('td:nth-child(3)');
+    //     firstCell.innerHTML = "<td>" + (index+1).toString() + ".</td>";
+    //     secondCell.innerHTML = "<td>" + score[0] + "</td>";
+    //     console.log(actualRow);
+    //     thirdCell.innerHTML = "<td>" + parseFloat(score[1]).toFixed(3).toString() + "</td>";
     // }
     for (const [index, score] of scoreBoard.slice(0, 10).entries()) {
-        let actualRow = document.querySelector(`.container3 tbody tr:nth-child(${index + 1})`);
-
-        let firstCell = actualRow.querySelector('td:nth-child(1)'),
-            secondCell = actualRow.querySelector('td:nth-child(2)'),
-            thirdCell = actualRow.querySelector('td:nth-child(3)');
-        firstCell.innerHTML = "<td>" + (index+1).toString() + ".</td>";
-        secondCell.innerHTML = "<td>" + score[0] + "</td>";
-        console.log(actualRow);
-        thirdCell.innerHTML = "<td>" + parseFloat(score[1]).toFixed(3).toString() + "</td>";
+        let tr = document.createElement("tr");
+        tr.insertAdjacentHTML(
+            'beforeend',
+            `<td>${index + 1}</td>
+                  <td>${score[0]}</td>
+                  <td>${parseFloat(score[1]).toFixed(3).toString()}</td>`
+        );
+        tbody.appendChild(tr);
     }
 }
 

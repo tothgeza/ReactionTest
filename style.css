@@ -117,7 +117,7 @@ body {
 }
 
 tbody tr:last-child {
-    background-color: var(--neonblue);
+    background-color: var(--neonblue2);
     color: white;
 }
 
