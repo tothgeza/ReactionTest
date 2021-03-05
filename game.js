@@ -224,7 +224,7 @@ function refreshScoreBoard(newScore) {
         return (a[1] < b[1]) ? 1 : -1;
     }
 
-    localStorage.setItem("board", JSON.stringify("scoreBoard"))
+    localStorage.setItem("board", JSON.stringify(scoreBoard))
 }
 
 function startGame() {
