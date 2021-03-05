@@ -22,6 +22,8 @@ function initLeftClick() {
     againButton.addEventListener("click", clickOnAgain);
     let scoreButton = document.querySelector(".score-button");
     scoreButton.addEventListener("click", clickOnScoreBoard);
+    let backButton = document.querySelector(".back-button");
+    backButton.addEventListener("click", clickOnBack);
 }
 
 function animationGameTitleIn() {
@@ -71,7 +73,15 @@ function clickOnScoreBoard() {
     animationGameMoveOut();
     setScoreBoard();
     animationScoreBoardMoveIn();
+    animationBackButtonMoveIn();
+}
 
+function clickOnBack() {
+    animationScoreBoardMoveOut();
+    animationBackButtonMoveOut()
+    animationScoreButtonMoveIn()
+    animationGameMoveIn();
+    animationStartButtonMoveIn();
 }
 
 function gameOver() {
@@ -92,12 +102,19 @@ function animationScoreBoardMoveIn() {
     container3.classList.add("animate__fadeInRightBig");
 }
 
+function animationScoreBoardMoveOut() {
+    let container3 = document.querySelector(".container3");
+    container3.classList.remove("animate__fadeInRightBig");
+    container3.classList.add("animate__fadeOutRightBig");
+}
+
 function setScoreBoard() {
     let container3 = document.querySelector(".container3");
-    // let board = JSON.parse(localStorage.getItem("board"));
-    // console.log(board);
+    // first clear scoreboard
+    while (container3.firstChild) {
+        container3.removeChild(container3.lastChild);
+    }
     for (let score of scoreBoard) {
-        // console.log(score);
         let tempDiv = document.createElement("div");
         tempDiv.innerHTML = "<div>" + `${score[0]}` + " " + `${score[1]}` + " points</div>";
         container3.insertAdjacentElement(
@@ -105,26 +122,39 @@ function setScoreBoard() {
             tempDiv);
     }
 }
-function animationScoreButtonMoveOut(){
-     let scoreButton = document.querySelector(".score-button");
-     scoreButton.classList.remove("animate__fadeInDownBig");
-     scoreButton.classList.add("animate__fadeOutUpBig");
+function animationBackButtonMoveIn() {
+    let backButton = document.querySelector(".back-button"),
+        startButton = document.querySelector(".start-button");
+    startButton.style.display = "none";
+    backButton.style.display = "inline-block";
+    backButton.classList.remove("animate__fadeOutDownBig");
+    backButton.classList.add("animate__fadeInUpBig");
+}
+
+function animationBackButtonMoveOut() {
+    let backButton = document.querySelector(".back-button");
+    backButton.classList.remove("animate__fadeInUpBig");
+    backButton.classList.add("animate__fadeOutDownBig");
+}
+function animationScoreButtonMoveOut() {
+    let scoreButton = document.querySelector(".score-button");
+    scoreButton.classList.remove("animate__fadeInDownBig");
+    scoreButton.classList.add("animate__fadeOutUpBig");
 }
 
 function animationScoreButtonMoveIn() {
     let scoreButton = document.querySelector(".score-button");
-     scoreButton.classList.remove("animate__fadeOutUpBig");
-     scoreButton.classList.add("animate__fadeInDownBig");
+    scoreButton.classList.remove("animate__fadeOutUpBig");
+    scoreButton.classList.add("animate__fadeInDownBig");
 }
 
 function animationAgainButtonMoveIn() {
     let againButton = document.querySelector(".again-button"),
         startButton = document.querySelector(".start-button");
     startButton.style.display = "none";
-    againButton.classList.remove("hide");
+    againButton.style.display = "inline-block";
     againButton.classList.remove("animate__fadeOutDownBig");
     againButton.classList.add("animate__fadeInUpBig");
-    againButton.style.display = "inline-block";
 }
 
 function animationAgainButtonMoveOut() {
@@ -135,8 +165,10 @@ function animationAgainButtonMoveOut() {
 
 function animationStartButtonMoveIn() {
     let startButton = document.querySelector(".start-button"),
+        backButton = document.querySelector(".back-button"),
         againButton = document.querySelector(".again-button");
     againButton.style.display = "none";
+    backButton.style.display = "none";
     startButton.classList.remove("animate__fadeOutDownBig");
     startButton.classList.add("animate__fadeInUpBig");
     startButton.style.display = "inline-block";
@@ -172,8 +204,10 @@ function animationResultsMoveOut() {
 
 function animationGameMoveIn() {
     let container = document.querySelector(".container"),
-        container2 = document.querySelector(".container2");
+        container2 = document.querySelector(".container2"),
+        container3 = document.querySelector(".container3");
     container2.style.display = "none";
+    container3.style.display = "none";
     container.style.display = "grid";
     container.classList.remove("animate__fadeOutLeftBig");
     container.classList.add("animate__fadeInLeftBig");
@@ -218,23 +252,15 @@ function setResults() {
     let playerName = prompt("Please enter your name");
     if (playerName != null) {
         let tempScore = [playerName, points.toFixed(3)];
-        // console.log(tempScore);
         refreshScoreBoard(tempScore);
     }
 }
 
 function refreshScoreBoard(newScore) {
-    console.log(newScore);
-    // scoreBoard = JSON.parse(localStorage.getItem("board"));
     scoreBoard.push(newScore);
-    scoreBoard.sort(sortFunction);
-    function sortFunction(a, b) {
-        if (a[0] === b[0]) {
-            return 0;
-        }
-        return (a[1] < b[1]) ? 1 : -1;
-    }
-    // localStorage.setItem("board", JSON.stringify(scoreBoard))
+    scoreBoard.sort(function(a, b) {
+        return a[1] - b[1];
+    })
 }
 
 function startGame() {
