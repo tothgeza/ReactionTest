@@ -71,9 +71,11 @@ function clickOnScoreBoard() {
     animationStartButtonMoveOut();
     animationScoreButtonMoveOut();
     animationGameMoveOut();
+    setTimeout(() => {
+        animationScoreBoardMoveIn();
+        animationBackButtonMoveIn();
+    }, 1000);
     setScoreBoard();
-    animationScoreBoardMoveIn();
-    animationBackButtonMoveIn();
 }
 
 function clickOnBack() {
@@ -109,19 +111,31 @@ function animationScoreBoardMoveOut() {
 }
 
 function setScoreBoard() {
-    let container3 = document.querySelector(".container3");
+    // let container3 = document.querySelector(".container3");
     // first clear scoreboard
-    while (container3.firstChild) {
-        container3.removeChild(container3.lastChild);
-    }
-    for (let score of scoreBoard) {
-        let tempDiv = document.createElement("div");
-        tempDiv.innerHTML = "<div>" + `${score[0]}` + " " + `${score[1]}` + " points</div>";
-        container3.insertAdjacentElement(
-            'beforeend',
-            tempDiv);
+    // while (container3.firstChild) {
+    //     container3.removeChild(container3.lastChild);
+    // }
+    // for (let score of scoreBoard.slice(0, 10)) {
+    //     let tempDiv = document.createElement("div");
+    //     tempDiv.innerHTML = "<div>" + `${score[0]}` + " " + `${score[1]}` + " points</div>";
+    //     container3.insertAdjacentElement(
+    //         'beforeend',
+    //         tempDiv);
+    // }
+    for (const [index, score] of scoreBoard.slice(0, 10).entries()) {
+        let actualRow = document.querySelector(`.container3 tbody tr:nth-child(${index + 1})`);
+
+        let firstCell = actualRow.querySelector('td:nth-child(1)'),
+            secondCell = actualRow.querySelector('td:nth-child(2)'),
+            thirdCell = actualRow.querySelector('td:nth-child(3)');
+        firstCell.innerHTML = "<td>" + (index+1).toString() + ".</td>";
+        secondCell.innerHTML = "<td>" + score[0] + "</td>";
+        console.log(actualRow);
+        thirdCell.innerHTML = "<td>" + parseFloat(score[1]).toFixed(3).toString() + "</td>";
     }
 }
+
 function animationBackButtonMoveIn() {
     let backButton = document.querySelector(".back-button"),
         startButton = document.querySelector(".start-button");
@@ -136,6 +150,7 @@ function animationBackButtonMoveOut() {
     backButton.classList.remove("animate__fadeInUpBig");
     backButton.classList.add("animate__fadeOutDownBig");
 }
+
 function animationScoreButtonMoveOut() {
     let scoreButton = document.querySelector(".score-button");
     scoreButton.classList.remove("animate__fadeInDownBig");
@@ -229,7 +244,7 @@ function setResults() {
     let results = allResults(),
         points = 0;
     for (const [index, result] of results.entries()) {
-        let actualRow = document.querySelector(`tbody tr:nth-child(${index + 1})`),
+        let actualRow = document.querySelector(`.container2 tbody tr:nth-child(${index + 1})`),
             firstCell = actualRow.querySelector('td:nth-child(1)'),
             actualPoint = parseInt(result[2]);
         if (actualPoint !== 3) {
@@ -258,7 +273,7 @@ function setResults() {
 
 function refreshScoreBoard(newScore) {
     scoreBoard.push(newScore);
-    scoreBoard.sort(function(a, b) {
+    scoreBoard.sort(function (a, b) {
         return a[1] - b[1];
     })
 }

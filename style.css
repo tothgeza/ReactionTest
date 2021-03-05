@@ -101,24 +101,28 @@ body {
 }
 
 .container2 th,
-.container2 td {
+.container2 td,
+.container3 th,
+.container3 td{
     padding: 7px 15px;
     text-align: center;
     color: var(--neonwhite);
     text-shadow: var(--neonwhite);
 }
 
-.container2 thead {
-    background-color: var(--neonblue2);
+.container2 thead,
+.container3 thead {
+    background-color: var(--neonblue);
     box-shadow: 0 0 30px var(--neonblue2)
 }
 
 tbody tr:last-child {
-    background-color: var(--neonblue2);
+    background-color: var(--neonblue);
     color: white;
 }
 
-.container2 tbody tr:nth-of-type(even) {
+.container2 tbody tr:nth-of-type(even),
+.container3 tbody tr:nth-of-type(even) {
     background-color: var(--neonblue2);
     box-shadow: 0 0 30px var(--neonblue2);
 }
