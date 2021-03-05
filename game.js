@@ -37,7 +37,6 @@ function leftClick(event) {
     if (cell.classList.contains("target")) {
         let roundCurrent = "Round" + event.currentTarget.dataset.round.toString(),
             showTime = sessionStorage.getItem("showTime");
-        // localStorage.setItem(roundCurrent, clickTime - showTime);
         roundsResult [roundCurrent] = clickTime - showTime;
         cell.classList.add("hit-bg");
         setTimeout(() => {
@@ -286,7 +285,6 @@ function refreshScoreBoard(newScore) {
 function startGame() {
     let cells = document.getElementsByClassName("col"),
         round = 0;
-    // localStorage.clear();
     roundsResult = {};
     sessionStorage.clear();
     const interval = setInterval(function () {
@@ -295,7 +293,6 @@ function startGame() {
             setTimeout(() => {
                 gameOver();
             }, 1500)
-
         }
         setRound(round);
         const targetCell = document.querySelector(".target");
@@ -320,9 +317,7 @@ function allResults() {
     for (let index = 0; index < 10; index++) {
         let key = "Round" + index.toString(),
             tempArray = [];
-        // if (localStorage.hasOwnProperty(key)) {
         if (key in roundsResult) {
-            // tempArray.push(counter + 1, "Hit", localStorage.getItem(key))
             tempArray.push(counter + 1, "Hit", roundsResult[key])
         } else {
             tempArray.push(counter + 1, "Miss", "3")

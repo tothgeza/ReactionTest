@@ -116,10 +116,10 @@ body {
     box-shadow: 0 0 30px var(--neonblue2)
 }
 
-tbody tr:last-child {
-    background-color: var(--neonblue2);
-    color: white;
-}
+/*tbody tr:last-child {*/
+/*    background-color: var(--neonblue2);*/
+/*    color: white;*/
+/*}*/
 
 .container2 tbody tr:nth-of-type(even),
 .container3 tbody tr:nth-of-type(even) {
