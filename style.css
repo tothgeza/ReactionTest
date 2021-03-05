@@ -205,7 +205,7 @@ tbody tr:last-child {
     background: var(--button-color);
     color: var(--black);
     box-shadow: 0 0 30px var(--button-color);
-    transition-delay: 0.5s;
+    transition-delay: 0.1s;
     /*transition: 0.5s;*/
     /*position: relative;*/
     /*margin: 15px 15px;*/
@@ -222,7 +222,7 @@ tbody tr:last-child {
     height: 20px;
     border-top: 2px solid var(--button-color);
     border-left: 2px solid var(--button-color);
-    transition: 0.5s;
+    transition: 0.1s;
     border-radius: 3px;
 }
 
@@ -240,7 +240,7 @@ tbody tr:last-child {
     height: 20px;
     border-bottom: 2px solid var(--button-color);
     border-right: 2px solid var(--button-color);
-    transition: 0.5s;
+    transition: 0.1s;
     border-radius: 3px;
 }
 
