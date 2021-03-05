@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Charmonman:wght@400;700&family=Comfortaa:wght@300;400;500;600;700&family=Grand+Hotel&family=Patrick+Hand&family=Sacramento&display=swap">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Charmonman:wght@400;700&family=Comfortaa:wght@300;400;500;600;700&family=Grand+Hotel&family=Patrick+Hand&family=Sacramento&display=swap">
     <title>Reaction Test</title>
 </head>
 <body>
     <h1 class="animate__animated title">Reaction Test</h1>
-    <div>
-        <a href="#" class="animate__animated animate__fadeInDownBig score-button button">ScoreBoard</a>
+    <div class="animate__animated animate__fadeInDownBig score-button">
+        <a href="#" class="button">ScoreBoard</a>
     </div>
     <div class="main animate__animated animate__fadeInLeftBig">
         <div class="container animate__animated">
@@ -123,8 +124,12 @@
     </div>
 
     <div class="buttons">
-        <a href="#" class="animate__animated animate__fadeInUpBig start-button button">Start</a>
-        <a href="#" class="animate__animated hide animate__fadeInUpBig again-button button">Again</a>
+        <div class="animate__animated animate__fadeInUpBig start-button">
+            <a href="#" class="button">Start</a>
+        </div>
+        <div class="animate__animated hide animate__fadeInUpBig again-button ">
+            <a href="#" class="button">Again</a>
+        </div>
     </div>
     <script src="game.js"></script>
 </body>
