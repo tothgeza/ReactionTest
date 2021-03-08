@@ -46,7 +46,7 @@ body {
     text-align: center;
     padding-top: 1%;
     margin-bottom: 10rem;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 .main {
@@ -103,7 +103,7 @@ body {
 .container2 th,
 .container2 td,
 .container3 th,
-.container3 td{
+.container3 td {
     padding: 7px 15px;
     text-align: center;
     color: var(--neonwhite);
@@ -183,13 +183,19 @@ body {
     --button-color: var(--neonorange);
 }
 
+.back-button {
+    --button-color: var(--neonorange);
+}
+
 .score-button {
     --button-color: var(--neonpink);
 
 }
+
 .buttons {
     margin: 3rem auto;
 }
+
 .button {
     color: var(--button-color);
     text-shadow: 0 0 30px var(--button-color), 0 0 30px var(--button-color);

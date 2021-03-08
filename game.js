@@ -59,55 +59,155 @@ function clickOnStart() {
 function clickOnAgain() {
     animationAgainButtonMoveOut();
     animationResultsMoveOut();
-    animationGameMoveIn();
-    animationStartButtonMoveIn();
-    animationScoreButtonMoveIn();
+    setTimeout(() => {
+        animationBoardMoveIn();
+        animationStartButtonMoveIn();
+        animationScoreButtonMoveIn();
+    }, 250);
 }
 
 function clickOnScoreBoard() {
     animationStartButtonMoveOut();
     animationScoreButtonMoveOut();
-    animationGameMoveOut();
-    animationBackButtonMoveIn();
-    animationScoreBoardMoveIn();
-    setScoreBoard();
+    animationBoardMoveOut();
+    setTimeout(() => {
+        animationBackButtonMoveIn();
+        animationScoreBoardMoveIn();
+        setScoreBoard();
+    }, 250);
 }
 
 function clickOnBack() {
     animationScoreBoardMoveOut();
-    animationBackButtonMoveOut()
-    animationScoreButtonMoveIn()
-    animationGameMoveIn();
-    animationStartButtonMoveIn();
+    animationBackButtonMoveOut();
+    setTimeout(() => {
+        animationScoreButtonMoveIn();
+        animationBoardMoveIn();
+        animationStartButtonMoveIn();
+    }, 250);
 }
 
 function gameOver() {
-    animationGameMoveOut();
-    animationResultsMoveIn();
-    animationAgainButtonMoveIn();
-    setResults();
+    getPlayerName()
+        .then(setResults)
+        .then(animationBoardMoveOut);
+    setTimeout(() => {
+        animationResultsMoveIn();
+        animationAgainButtonMoveIn();
+    })
+}
+
+function animationBackButtonMoveIn() {
+    let backButton = $(".back-button");
+    backButton.style.display = "inline-block";
+    backButton.classList.remove("animate__fadeOutDownBig");
+    backButton.classList.add("animate__fadeInUpBig");
+}
+
+function animationBackButtonMoveOut() {
+    let backButton = $(".back-button");
+    backButton.classList.remove("animate__fadeInUpBig");
+    backButton.classList.add("animate__fadeOutDownBig");
+    setTimeout(() => {
+        backButton.style.display = "none";
+    }, 250);
+}
+
+
+function animationScoreButtonMoveIn() {
+    let scoreButton = $(".score-button");
+    scoreButton.classList.remove("animate__fadeOutUpBig");
+    scoreButton.classList.add("animate__fadeInDownBig");
+}
+
+function animationScoreButtonMoveOut() {
+    let scoreButton = $(".score-button");
+    scoreButton.classList.remove("animate__fadeInDownBig");
+    scoreButton.classList.add("animate__fadeOutUpBig");
+}
+
+function animationAgainButtonMoveIn() {
+    let againButton = $(".again-button");
+    againButton.style.display = "inline-block";
+    againButton.classList.remove("animate__fadeOutDownBig");
+    againButton.classList.add("animate__fadeInUpBig");
+}
+
+function animationAgainButtonMoveOut() {
+    let againButton = $(".again-button");
+    againButton.classList.remove("animate__fadeInUpBig");
+    againButton.classList.add("animate__fadeOutDownBig");
+    setTimeout(() => {
+        againButton.style.display = "none";
+    }, 250);
+}
+
+function animationStartButtonMoveIn() {
+    let startButton = $(".start-button");
+    startButton.style.display = "inline-block";
+    startButton.classList.remove("animate__fadeOutDownBig");
+    startButton.classList.add("animate__fadeInUpBig");
+}
+
+function animationStartButtonMoveOut() {
+    let startButton = $(".start-button");
+    startButton.classList.remove("animate__fadeInUpBig");
+    startButton.classList.add("animate__fadeOutDownBig");
+    setTimeout(() => {
+        startButton.style.display = "none";
+    }, 250);
+}
+
+function animationBoardMoveIn() {
+    let board = $("#board");
+    board.classList.remove("animate__fadeOutLeftBig");
+    board.style.display = "grid";
+    board.classList.add("animate__fadeInLeftBig");
+}
+
+function animationBoardMoveOut() {
+    let container = $("#board");
+    container.classList.remove("animate__fadeInLeftBig");
+    container.classList.add("animate__fadeOutLeftBig");
+    setTimeout(() => {
+        container.style.display = "none";
+    }, 250);
+}
+
+function animationResultsMoveIn() {
+    let results = $("#results");
+    results.style.display = "block";
+    results.classList.remove("animate__fadeOutRightBig");
+    results.classList.add("animate__fadeInRightBig");
+}
+
+function animationResultsMoveOut() {
+    let results = $("#results");
+    results.classList.remove("animate__fadeInRightBig");
+    results.classList.add("animate__fadeOutRightBig");
+    setTimeout(() => {
+        results.style.display = "none";
+    }, 250);
 }
 
 function animationScoreBoardMoveIn() {
-    let container3 = document.querySelector(".container3"),
-        container = document.querySelector(".container");
-    container3.style.display = "block";
-    container.style.display = "none";
-    container3.classList.remove("animate__fadeOutRightBig");
-    container3.classList.add("animate__fadeInRightBig");
+    let scoreBoard = $("#score-board");
+    scoreBoard.style.display = "block";
+    scoreBoard.classList.remove("animate__fadeOutRightBig");
+    scoreBoard.classList.add("animate__fadeInRightBig");
 }
 
 function animationScoreBoardMoveOut() {
-    let container3 = document.querySelector(".container3");
-    container3.classList.remove("animate__fadeInRightBig");
-    container3.classList.add("animate__fadeOutRightBig");
+    let scoreBoard = $("#score-board");
+    scoreBoard.classList.remove("animate__fadeInRightBig");
+    scoreBoard.classList.add("animate__fadeOutRightBig");
     setTimeout(() => {
-        container3.style.display = "none";
-    }, 100);
+        scoreBoard.style.display = "none";
+    }, 250);
 }
 
 function setScoreBoard() {
-    let tbody = document.querySelector(".container3 tbody");
+    let tbody = $(".container3 tbody");
     // first clear scoreboard
     while (tbody.firstChild) {
         tbody.removeChild(tbody.lastChild);
@@ -124,116 +224,8 @@ function setScoreBoard() {
     }
 }
 
-function animationBackButtonMoveIn() {
-    let backButton = document.querySelector(".back-button"),
-        startButton = document.querySelector(".start-button");
-    startButton.style.display = "none";
-    backButton.style.display = "inline-block";
-    backButton.classList.remove("animate__fadeOutDownBig");
-    backButton.classList.add("animate__fadeInUpBig");
-}
-
-function animationBackButtonMoveOut() {
-    let backButton = document.querySelector(".back-button");
-    backButton.classList.remove("animate__fadeInUpBig");
-    backButton.classList.add("animate__fadeOutDownBig");
-    setTimeout(() => {
-        backButton.style.display = "none";
-    }, 100);
-}
-
-function animationScoreButtonMoveOut() {
-    let scoreButton = document.querySelector(".score-button");
-    scoreButton.classList.remove("animate__fadeInDownBig");
-    scoreButton.classList.add("animate__fadeOutUpBig");
-}
-
-function animationScoreButtonMoveIn() {
-    let scoreButton = document.querySelector(".score-button");
-    scoreButton.classList.remove("animate__fadeOutUpBig");
-    scoreButton.classList.add("animate__fadeInDownBig");
-}
-
-function animationAgainButtonMoveIn() {
-    let againButton = document.querySelector(".again-button"),
-        startButton = document.querySelector(".start-button");
-    startButton.style.display = "none";
-    againButton.classList.remove("animate__fadeOutDownBig");
-    againButton.classList.add("animate__fadeInUpBig");
-    againButton.style.display = "inline-block";
-}
-
-function animationAgainButtonMoveOut() {
-    let againButton = document.querySelector(".again-button");
-    againButton.classList.remove("animate__fadeInUpBig");
-    againButton.classList.add("animate__fadeOutDownBig");
-    setTimeout(() => {
-        againButton.style.display = "none";
-    }, 100);
-}
-
-function animationStartButtonMoveIn() {
-    let startButton = document.querySelector(".start-button"),
-        backButton = document.querySelector(".back-button"),
-        againButton = document.querySelector(".again-button");
-    againButton.style.display = "none";
-    backButton.style.display = "none";
-    startButton.classList.remove("animate__fadeOutDownBig");
-    startButton.classList.add("animate__fadeInUpBig");
-    startButton.style.display = "inline-block";
-}
-
-function animationStartButtonMoveOut() {
-    let startButton = document.querySelector(".start-button");
-    startButton.classList.remove("animate__fadeInUpBig");
-    startButton.classList.add("animate__fadeOutDownBig");
-    setTimeout(() => {
-        startButton.style.display = "none";
-    }, 100);
-
-
-}
-
-function animationGameMoveOut() {
-    let container = document.querySelector(".container");
-    container.classList.remove("animate__fadeInLeftBig");
-    container.classList.add("animate__fadeOutLeftBig");
-    setTimeout(() => {
-        container.style.display = "none";
-    }, 100);
-}
-
-function animationResultsMoveIn() {
-    let container2 = document.querySelector(".container2"),
-        container = document.querySelector(".container");
-    container.style.display = "none";
-    container2.style.display = "block";
-    container2.classList.remove("animate__fadeOutRightBig");
-    container2.classList.add("animate__fadeInRightBig");
-}
-
-function animationResultsMoveOut() {
-    let container2 = document.querySelector(".container2");
-    container2.classList.remove("animate__fadeInRightBig");
-    container2.classList.add("animate__fadeOutRightBig");
-    setTimeout(() => {
-        container2.style.display = "none";
-    }, 100);
-}
-
-function animationGameMoveIn() {
-    let container = document.querySelector(".container"),
-        container2 = document.querySelector(".container2"),
-        container3 = document.querySelector(".container3");
-    container2.style.display = "none";
-    container3.style.display = "none";
-    container.style.display = "grid";
-    container.classList.remove("animate__fadeOutLeftBig");
-    container.classList.add("animate__fadeInLeftBig");
-}
-
 function initCrossHair() {
-    let main = document.querySelector(".main");
+    let main = $(".main");
     main.style.cursor = "cell";
 }
 
@@ -244,11 +236,11 @@ function setRound(round) {
     }
 }
 
-function setResults() {
+function setResults(playerName) {
     let results = allResults(),
         points = 0;
     for (const [index, result] of results.entries()) {
-        let actualRow = document.querySelector(`.container2 tbody tr:nth-child(${index + 1})`),
+        let actualRow = $(`.container2 tbody tr:nth-child(${index + 1})`),
             firstCell = actualRow.querySelector('td:nth-child(1)'),
             actualPoint = parseInt(result[2]);
         if (actualPoint !== 3) {
@@ -261,18 +253,26 @@ function setResults() {
         let secondCell = actualRow.querySelector('td:nth-child(2)');
         secondCell.innerHTML = "<td>" + (result[1]) + "</td>";
         let thirdCell = actualRow.querySelector('td:nth-child(3)');
-        thirdCell.innerHTML = "<td>" + actualPoint.toString() + "</td>";
+        thirdCell.innerHTML = "<td>" + actualPoint.toFixed(3).toString() + "</td>";
     }
-    let lastRow = document.querySelector(`tbody tr:last-child`),
+    let lastRow = $(`tbody tr:last-child`),
         firstCell = lastRow.querySelector('td:nth-child(1)'),
         lastCell = lastRow.querySelector('td:nth-child(3)');
     firstCell.innerHTML = "<td>Points</td>";
     lastCell.innerHTML = "<td>" + points.toFixed(3).toString() + "</td>";
-    let playerName = prompt("Please enter your name");
+    // let playerName = prompt("Please enter your name");
     if (playerName != null) {
         let tempScore = [playerName, points.toFixed(3)];
         refreshScoreBoard(tempScore);
     }
+    return Promise.resolve();
+}
+
+function getPlayerName() {
+    return new Promise((resolve) => {
+        let playerName = prompt("Please enter your name");
+        resolve(playerName);
+    });
 }
 
 function refreshScoreBoard(newScore) {
@@ -295,7 +295,7 @@ function startGame() {
             }, 1500)
         }
         setRound(round);
-        const targetCell = document.querySelector(".target");
+        const targetCell = $(".target");
         if (targetCell !== null && targetCell.classList.contains("target")) {
             targetCell.classList.remove("target");
         }
@@ -308,7 +308,7 @@ function startGame() {
             cells[randomNum].classList.remove("target-bg");
         }, 250)
         round += 1;
-    }, 1500)
+    }, 500)
 }
 
 function allResults() {
@@ -326,4 +326,8 @@ function allResults() {
         results.push(tempArray);
     }
     return results;
+}
+
+function $(selector) {
+    return document.querySelector(selector);
 }

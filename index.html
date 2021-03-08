@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Charmonman:wght@400;700&family=Comfortaa:wght@300;400;500;600;700&family=Grand+Hotel&family=Patrick+Hand&family=Sacramento&display=swap">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Reaction Test</title>
 </head>
 <body>
@@ -18,7 +19,7 @@
         <a href="#" class="button">ScoreBoard</a>
     </div>
     <div class="main animate__animated animate__fadeInLeftBig">
-        <div class="container animate__animated">
+        <div class="container animate__animated" id="board">
             <div class="col" data-round=""></div>
             <div class="col" data-round=""></div>
             <div class="col" data-round=""></div>
@@ -45,7 +46,7 @@
             <div class="col" data-round=""></div>
             <div class="col" data-round=""></div>
         </div>
-        <div class="container2 hide animate__animated">
+        <div class="container2 hide animate__animated" id="results">
             <div class="wrapper">
                 <table class="result-table">
                     <thead>
@@ -120,7 +121,7 @@
                 </table>
             </div>
         </div>
-        <div class="container3 hide animate__animated">
+        <div class="container3 hide animate__animated" id="score-board">
             <div class="wrapper">
                 <table class="result-table">
                     <thead>
@@ -142,7 +143,7 @@
             <a href="#" class="button">Start</a>
         </div>
         <div class="animate__animated hide animate__fadeInUpBig again-button ">
-            <a href="#" class="button">Again</a>
+            <a href="#" class="button">Back</a>
         </div>
         <div class="animate__animated hide animate__fadeInUpBig back-button ">
             <a href="#" class="button">Back</a>
