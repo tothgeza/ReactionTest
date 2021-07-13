@@ -4,6 +4,7 @@
 <p align="center">
 
   <h1 align="center">Reaction Test - Javascript Game</h2>
+  <br />
   <p align="center">
     <a href="https://tothgeza.github.io/ReactionTest">View Demo</a>
   </p>
