@@ -308,7 +308,7 @@ function startGame() {
             cells[randomNum].classList.remove("target-bg");
         }, 250)
         round += 1;
-    }, 500)
+    }, 1500)
 }
 
 function allResults() {
